@@ -21,7 +21,7 @@
           <td>Game Name</td>
           <td>Game Price</td>
           <td colspan="2">Action</td>
-          <td><a href="{{ route('create') }}" class="btn btn-success">ADD</a></td>
+          <!-- <td><a href="{{ route('create') }}" class="btn btn-success">ADD</a></td> -->
         </tr>
     </thead>
     <tbody>
