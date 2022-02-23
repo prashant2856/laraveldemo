@@ -18,21 +18,29 @@
     <thead>
         <tr>
           <td>ID</td>
-          <td>Game Name</td>
-          <td>Game Price</td>
+          <td>FirstName</td>
+          <td>Email</td>
+          <td>Mobile</td>
+          <td>City</td>
+          <td>State</td>
+          <td>Country</td>
           <td colspan="2">Action</td>
-          <td><a href="{{ route('create') }}" class="btn btn-success">ADD</a></td>
+          <td><a href="{{route('createStudent')}}" class="btn btn-success">ADD</a></td>
         </tr>
     </thead>
-    <tbody>
-        @foreach($games as $game)
+      <tbody>
+      @foreach($students as $stu)
         <tr>
-            <td>{{$game->id}}</td>
-            <td>{{$game->name}}</td>
-            <td>{{$game->price}}</td>
-            <td><a href="{{ route('games.edit', $game->id)}}" class="btn btn-primary">Edit</a></td>
+            <td>{{$stu->id}}</td>
+            <td>{{$stu->firstname}}</td>
+            <td>{{$stu->email}}</td>
+            <td>{{$stu->mobile}}</td>
+            <td>{{$stu->city}}</td>
+            <td>{{$stu->state}}</td>
+            <td>{{$stu->country}}</td>
+            <td><a href="{{ route('students.editStudent', $stu->id)}}" class="btn btn-primary">Edit</a></td>
             <td colspan="2">
-                <form action="{{ route('games.destroy', $game->id)}}" method="post">
+                <form action="#" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>
