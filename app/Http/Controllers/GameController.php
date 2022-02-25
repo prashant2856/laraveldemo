@@ -36,6 +36,7 @@ class GameController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -95,6 +96,7 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function destroy($id)
     {
         $game = Game::findOrFail($id);

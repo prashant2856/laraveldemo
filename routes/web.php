@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\StudentController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,16 +22,18 @@ Route::get('/', function () {
 
 Route::resource('games', 'GameController');
 
-Route::resource('student', 'StudentController');
+// Route::get('/create', function () {
+//     return view('create');
+// })->name('create');
 
-Route::get('/create', function () {
-    return view('create');
-})->name('create');
+Route::get("/students", [StudentController::class, "index"]);
 
-Route::get('/students.createStudent', function () {
-    return view('students.createStudent');
-})->name('createStudent');
+Route::post("/students", [StudentController::class, "store"])->name('students.store');
 
-Route::get('/students.editStudent', function () {
-    return view('students.editStudent');
-})->name('students.editStudent');
+Route::get('/students/create', [StudentController::class, "create"])->name('students.create');
+
+Route::get('/students/edit/{id}', [StudentController::class, "edit"])->name('students.edit');
+
+Route::put('/students/update/{id}', [StudentController::class, "update"])->name('students.update');
+
+Route::delete('/students/destroy/{id}', [StudentController::class, "destroy"])->name('students.destroy');

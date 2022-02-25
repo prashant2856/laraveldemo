@@ -18,29 +18,25 @@
     <thead>
         <tr>
           <td>ID</td>
-          <td>FirstName</td>
+          <td>First Name</td>
           <td>Email</td>
           <td>Mobile</td>
           <td>City</td>
-          <td>State</td>
-          <td>Country</td>
           <td colspan="2">Action</td>
-          <td><a href="{{route('createStudent')}}" class="btn btn-success">ADD</a></td>
+         <td><a href="{{ route('students.create') }}" class="btn btn-success">ADD</a></td>
         </tr>
     </thead>
-      <tbody>
-      @foreach($students as $stu)
+    <tbody>
+        @foreach($students as $student)
         <tr>
-            <td>{{$stu->id}}</td>
-            <td>{{$stu->firstname}}</td>
-            <td>{{$stu->email}}</td>
-            <td>{{$stu->mobile}}</td>
-            <td>{{$stu->city}}</td>
-            <td>{{$stu->state}}</td>
-            <td>{{$stu->country}}</td>
-            <td><a href="{{ route('students.editStudent', $stu->id)}}" class="btn btn-primary">Edit</a></td>
+            <td>{{$student->id}}</td>
+            <td>{{$student->firstname}}</td>
+            <td>{{$student->email}}</td>
+            <td>{{$student->mobile}}</td>
+            <td>{{$student->city}}</td>
+            <td><a href="{{ route('students.edit', $student->id)}}" class="btn btn-primary">Edit</a></td>
             <td colspan="2">
-                <form action="#" method="post">
+                <form action="{{ route('students.destroy', $student->id) }}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>

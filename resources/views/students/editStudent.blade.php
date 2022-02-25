@@ -20,34 +20,26 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('students.update', $stu->id ) }}">
+      <form method="post" action="{{ route('students.update', $student->id ) }}">
           <div class="form-group">
               @csrf
-              @method('PATCH')
-              <label for="country_name">FirstName:</label>
-              <input type="text" class="form-control" name="name" value="{{ $stu->firstname }}"/>
+              @method('PUT')
+              <label for="firstname">First Name:</label>
+              <input type="text" class="form-control" name="firstname" value="{{ $student->firstname }}"/>
           </div>
           <div class="form-group">
-              <label for="cases">Email :</label>
-              <input type="text" class="form-control" name="email" value="{{ $stu->email }}"/>
+              <label for="email">Email :</label>
+              <input type="text" class="form-control" name="email" value="{{ $student->email }}"/>
           </div>
           <div class="form-group">
-              <label for="cases">Mobile :</label>
-              <input type="text" class="form-control" name="mobile" value="{{ $stu->mobile }}"/>
+              <label for="mobile">Mobile :</label>
+              <input type="text" class="form-control" name="mobile" value="{{ $student->mobile }}"/>
           </div>
           <div class="form-group">
-              <label for="cases">City :</label>
-              <input type="text" class="form-control" name="city" value="{{ $stu->city }}"/>
+              <label for="city">Email :</label>
+              <input type="text" class="form-control" name="city" value="{{ $student->city }}"/>
           </div>
-          <div class="form-group">
-              <label for="cases">State :</label>
-              <input type="text" class="form-control" name="state" value="{{ $stu->state }}"/>
-          </div>
-          <div class="form-group">
-              <label for="cases">Country :</label>
-              <input type="text" class="form-control" name="country" value="{{ $stu->country }}"/>
-          </div>
-          <button type="submit" class="btn btn-primary">Update Student</button>
+          <button type="submit" class="btn btn-primary mt-3">Update Student</button>
       </form>
   </div>
 </div>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Student;
 
 class StudentController extends Controller
@@ -43,13 +42,10 @@ class StudentController extends Controller
             'email' => 'required',
             'mobile' => 'required',
             'city' => 'required',
-            'state' => 'required',
-            'country' => 'required',
-
         ]);
         $show = Student::create($validatedData);
    
-        return redirect('/student')->with('success', 'Student Added successfully');
+        return redirect('/students')->with('success', 'Student is successfully saved');
     }
 
     /**
@@ -71,7 +67,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::findOrFail($id);
+
+        return view('students.editStudent', compact('student'));
     }
 
     /**
@@ -87,14 +85,12 @@ class StudentController extends Controller
             'firstname' => 'required|max:255',
             'email' => 'required',
             'mobile' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'country' => 'required'
-
+            'city' => 'required'
         ]);
+
         Student::whereId($id)->update($validatedData);
 
-        return redirect('/student')->with('success', 'Student Data is successfully updated');
+        return redirect('/students')->with('success', 'Students Data is successfully updated');
     }
 
     /**
@@ -105,6 +101,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Student::findOrFail($id);
+        $student->delete();
+        return redirect('/students')->with('success', 'Student Data is successfully deleted');
     }
 }
